@@ -12,7 +12,9 @@
           <div class="middle-text">期望奇迹，不如成为奇迹</div>
         </div>
         <div class="home-enter">
-          <div class="smilex-btn">博客</div>
+          <div class="smilex-btn">
+            <span>博客</span>
+          </div>
         </div>
         <div class="home-outer-enter"></div>
       </div>

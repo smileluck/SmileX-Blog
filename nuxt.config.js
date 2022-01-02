@@ -50,9 +50,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     styleResources: {
-      scss: ['./assets/css/variables.scss'],
+      scss: ['./assets/css/variables.scss', './assets/css/mixins.scss'],
     },
-    extend(config, ctx) {
+    /** extend(config, ctx) {
       const sassResourcesLoader = {
         loader: 'sass-resources-loader',
         options: {
@@ -72,6 +72,6 @@ export default {
           rule.use.push(sassResourcesLoader)
         }
       })
-    },
+    }, */
   },
 }
