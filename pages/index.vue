@@ -1,5 +1,5 @@
 <template>
-  <Tutorial />
+  <home-index />
 </template>
 
 <script>

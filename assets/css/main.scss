@@ -1,3 +1,10 @@
-.temp{
-    
+body {
+  line-height: 1.5;
+  font-size: $S-Font-Text-Size;
+}
+.wrapper {
+  font-family: 'Arial', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
