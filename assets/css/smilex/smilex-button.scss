@@ -1,5 +1,6 @@
 .smilex-btn {
   @include no-select;
+  margin: 0 5px 0 0;
   padding: 8px 12px;
   border-radius: 5px;
   font-size: $S-Font-Text-Size;
@@ -8,4 +9,8 @@
   // background-color: #fff;
   cursor: pointer;
   box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+}
+
+.smilex-text-btn {
+  border: transparent;
 }

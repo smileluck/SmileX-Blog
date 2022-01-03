@@ -7,16 +7,25 @@
           <div class="top-name">SMILE</div>
           <div class="top-motto">The ideal of life is for ideal life</div>
         </div>
-        <hr class="smilex-hr" />
+        <hr class="smilex-hr home-hr" />
         <div class="home-middle">
-          <div class="middle-text">期望奇迹，不如成为奇迹</div>
+          <div class="middle-text">######</div>
+          <!-- 期望奇迹，不如成为奇迹 -->
         </div>
         <div class="home-enter">
           <div class="smilex-btn">
             <span>博客</span>
           </div>
+          <div class="smilex-btn">
+            <span>计划</span>
+          </div>
+          <div class="smilex-btn">
+            <span>工具</span>
+          </div>
         </div>
-        <div class="home-outer-enter"></div>
+        <div class="home-outer-enter">
+          <div class="smilex-icon">bilibili</div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,6 +41,7 @@ $inner-width: 600px;
 .home-wrapper {
   background: url('~static/images/home/home-back.jpg') center center / cover
     no-repeat;
+  color: #fff;
 
   & .home-main {
     position: absolute;
@@ -71,6 +81,10 @@ $inner-width: 600px;
     }
   }
   .home-enter {
+    margin: 10px auto;
+  }
+  .home-hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
   }
 }
 </style>

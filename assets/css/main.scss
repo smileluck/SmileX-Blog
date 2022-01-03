@@ -1,3 +1,13 @@
+/**淡入淡出效果**/
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
 body {
   line-height: 1.5;
   font-size: $S-Font-Text-Size;
