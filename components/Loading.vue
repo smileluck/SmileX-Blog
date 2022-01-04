@@ -1,12 +1,40 @@
 <template lang="html">
-    <div class="loading-wrapper">
-        <div class="loading-"></div>
+    <div class="loading-wrapper" v-if="loading">
+        <sx-spin spinType="2block"></sx-spin>
     </div>
 </template>
 
 <script>
-export default {}
+import SxSpin from '@/components/smilex/SxSpin.vue'
+export default {
+  name: 'Loading',
+  components: { SxSpin },
+  data: () => ({
+    loading: true,
+  }),
+  methods: {
+    start() {
+      this.loading = true
+    },
+    finish() {
+      this.loading = false
+    },
+  },
+}
 </script>
 
 <style>
+.loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
 </style>

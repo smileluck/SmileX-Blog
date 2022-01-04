@@ -22,6 +22,8 @@ export default {
     API_BASE_HTTP: process.env.API_BASE_HTTP
   },
 
+  loading: '@/components/Loading.vue',
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/reset.css',
