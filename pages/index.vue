@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <home-index />
-  </div>
+  <home-index />
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-    })
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    // })
     // setTimeout(() => {
     //   this.$nuxt.$loading.finish()
     // }, 1500)

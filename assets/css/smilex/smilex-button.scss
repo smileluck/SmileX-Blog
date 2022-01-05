@@ -1,9 +1,9 @@
 .smilex-btn {
   @include no-select;
-  margin: 0 5px 0 0;
+  margin: $S-Margin-Base;
   padding: 8px 12px;
   border-radius: 5px;
-  font-size: $S-Font-Text-Size;
+  font-size: $S-Font-Size-Base;
   border: 1px solid #999;
   display: inline-block;
   // background-color: #fff;

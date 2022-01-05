@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="loading-wrapper" v-if="loading">
-        <sx-spin spinType="2block"></sx-spin>
+        <sx-spin spinType="heart"></sx-spin>
     </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   name: 'Loading',
   components: { SxSpin },
   data: () => ({
-    loading: true,
+    loading: false,
   }),
   methods: {
     start() {

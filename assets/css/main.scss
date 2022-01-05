@@ -10,11 +10,39 @@
 
 body {
   line-height: 1.5;
-  font-size: $S-Font-Text-Size;
+  font-size: $S-Font-Size-Base;
 }
 .wrapper {
-  font-family: 'Arial', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   width: 100vw;
   height: 100vh;
   position: relative;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-content {
+    width: 100%;
+    height: 100%;
+  }
+  &-footer {
+    // position: fixed;
+    position: relative;
+    bottom: 0;
+    height: 40px;
+    background-color: rgb(17, 1, 1);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: #fff;
+    line-height: 40px;
+    flex: 0 0 40px;
+  }
 }

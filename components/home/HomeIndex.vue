@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper home-wrapper">
+  <div class="home-wrapper">
     <div class="home-main">
       <div class="home-main_inner">
         <div class="home-top">
@@ -9,22 +9,16 @@
         </div>
         <hr class="smilex-hr home-hr" />
         <div class="home-middle">
-          <div class="middle-text">######</div>
-          <!-- 期望奇迹，不如成为奇迹 -->
+          <div class="middle-text">期望奇迹，不如成为奇迹</div>
         </div>
         <div class="home-enter">
-          <div class="smilex-btn">
-            <span>博客</span>
-          </div>
-          <div class="smilex-btn">
-            <span>计划</span>
-          </div>
-          <div class="smilex-btn">
-            <span>工具</span>
-          </div>
+          <sx-button @click.native="navRoute('/blog')">博客</sx-button>
+          <sx-button @click.native="navRoute('/blog')">计划</sx-button>
+          <sx-button @click.native="navRoute('/blog')">工具</sx-button>
         </div>
         <div class="home-outer-enter">
-          <div class="smilex-icon">bilibili</div>
+          <sx-icon iconType="github"></sx-icon>
+          <sx-icon iconType="bilibili"></sx-icon>
         </div>
       </div>
     </div>
@@ -32,10 +26,22 @@
 </template>
 
 <script>
+import SxIcon from '../smilex/SxIcon.vue'
+import SxButton from '../smilex/SxButton.vue'
 export default {
-  name: 'homeIndex',
+  components: { SxIcon, SxButton },
+  name: 'HomeIndex',
+  methods: {
+    navRoute(path) {
+      console.log(this.$router);
+      this.$router.push({
+        path: path,
+      })
+    },
+  },
 }
 </script>
+
 
 <style lang="scss" scoped>
 $inner-width: 600px;
@@ -44,6 +50,8 @@ $inner-width: 600px;
   background: url('~static/images/home/home-back.jpg') center center / cover
     no-repeat;
   color: #fff;
+  width: 100%;
+  height: 100%;
 
   & .home-main {
     position: absolute;
@@ -75,11 +83,11 @@ $inner-width: 600px;
       border: 1px solid #999;
     }
     .top-name {
-      font-size: $S-Font-Head24-Size;
+      font-size: $S-Font-Size-Head24;
       font-weight: bolder;
     }
     .top-motto {
-      font-size: $S-Font-Head16-Size;
+      font-size: $S-Font-Size-Head16;
     }
   }
   .home-enter {
@@ -87,6 +95,12 @@ $inner-width: 600px;
   }
   .home-hr {
     border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .home-outer-enter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
