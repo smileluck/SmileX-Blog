@@ -1,9 +1,11 @@
 <template>
-  <div>123213</div>
+  <div></div>
 </template>
 
 <script>
-export default {}
+export default {
+  layout: 'blog',
+}
 </script>
 
 <style>

@@ -3,7 +3,17 @@
     <div class="home-main">
       <div class="home-main_inner">
         <div class="home-top">
-          <div class="top-avater"></div>
+          <div
+            class="top-avater-box"
+            @mousemove="avaterTouch = true"
+            @mouseout="avaterTouch = false"
+          >
+            <div
+              class="top-avater-front"
+              :class="avaterTouch ? 'top-avater-front_hover' : ''"
+            ></div>
+            <div class="top-avater-back"></div>
+          </div>
           <div class="top-name">SMILE</div>
           <div class="top-motto">The ideal of life is for ideal life</div>
         </div>
@@ -31,13 +41,17 @@ import SxButton from '../smilex/SxButton.vue'
 export default {
   components: { SxIcon, SxButton },
   name: 'HomeIndex',
+  data: () => ({
+    avaterTouch: false,
+  }),
   methods: {
     navRoute(path) {
-      console.log(this.$router);
+      console.log(this.$router)
       this.$router.push({
         path: path,
       })
     },
+    avaterMouseMove() {},
   },
 }
 </script>
@@ -73,14 +87,41 @@ $inner-width: 600px;
     flex-direction: column;
     align-items: center;
     font-family: aquatico-rg2;
-    .top-avater {
-      border-radius: 100%;
+    .top-avater-box {
       width: 150px;
       height: 150px;
-      overflow: hidden;
-      background: url('~static/images/home/home-avater.jpg') center center /
-        cover no-repeat;
-      border: 1px solid #999;
+      cursor: pointer;
+      position: relative;
+      .top-avater-front {
+        border-radius: 100%;
+        border: 1px solid #999;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: url('~static/images/home/home-avater.jpg') center center /
+          cover no-repeat;
+        // background-color: #999;
+        transition: all 0.3s;
+        //设置元素被查看位置的视图
+        perspective: 150;
+        // backface-visibility: hidden;
+        transform-origin: right;
+        position: absolute;
+        z-index: 3;
+        &_hover {
+          transform: rotateY(180deg);
+        }
+      }
+      .top-avater-back {
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: url('~static/images/home/home-back2.jpg') left center /
+          cover no-repeat;
+        position: absolute;
+        z-index: 2;
+      }
     }
     .top-name {
       font-size: $S-Font-Size-Head24;

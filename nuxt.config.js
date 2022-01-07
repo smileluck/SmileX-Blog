@@ -27,9 +27,10 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/reset.css',
-    '@/assets/css/main.scss',
-    '@/assets/css/fonts.css',
-    '@/assets/css/smilex/global.scss',
+    '@/assets/css/global.scss',
+    '@/assets/css/layouts.scss',
+    '@/assets/css/media.scss',
+    '@/assets/css/smilex/index.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -41,7 +42,9 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    // ['@nuxtjs/vuetify', { /* 模块选项 */ }]
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

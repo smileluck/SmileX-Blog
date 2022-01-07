@@ -1,0 +1,38 @@
+/**淡入淡出效果**/
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+@font-face {
+  font-family: "aquatico-rg2";
+  font-display: swap;
+  src: url("~/static/fonts/Aquatico-Regular-2.otf"); /* IE9*/
+}
+
+html {
+  position: relative;
+  // 抗锯齿渲染
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto !important;
+}
+
+body {
+  line-height: 1.5;
+  font-size: $S-Font-Size-Base;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  font-weight: 400;
+}
+.wrapper {
+  width: 100%;
+  position: relative;
+  height: 100vh;
+}

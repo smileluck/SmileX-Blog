@@ -1,24 +1,16 @@
-/**淡入淡出效果**/
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.5s;
-}
-.page-enter,
-.page-leave-active {
-  opacity: 0;
-}
-
-body {
-  line-height: 1.5;
-  font-size: $S-Font-Size-Base;
-}
-.wrapper {
-  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
-  width: 100vw;
-  height: 100vh;
+/**********container*********************/
+.container {
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  box-sizing: border-box;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/*****************layout*******************/
 .layout {
   display: flex;
   flex-direction: column;
@@ -26,6 +18,11 @@ body {
   height: 100%;
   position: relative;
 
+  &-header {
+    flex: 0 0 $S-Nav-Height;
+    height: $S-Nav-Height;
+    position: relative;
+  }
   &-content {
     width: 100%;
     height: 100%;
