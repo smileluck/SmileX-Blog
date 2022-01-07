@@ -48,5 +48,21 @@ export default {}
   &-toggle {
     display: none;
   }
+  &-collapse {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  }
+  &-list {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    &-item {
+    }
+  }
 }
 </style>
