@@ -1,5 +1,21 @@
 # smilex-blog
 
+## need
+- [  ] iconfont 
+    - home
+    - explore
+    - word
+    - search
+    - arrow
+    - menu
+    - 3 line to X
+    - time
+    - viewer
+    - comment
+    - calendar
+- [  ] logo
+- [ ] Blog Home banner wave
+
 ## Build Setup
 
 ```bash

@@ -6,7 +6,7 @@
   box-sizing: border-box;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -19,9 +19,9 @@
   position: relative;
 
   &-header {
-    flex: 0 0 $S-Nav-Height;
-    height: $S-Nav-Height;
+    height: 600px;
     position: relative;
+    overflow: hidden;
   }
   &-content {
     width: 100%;
