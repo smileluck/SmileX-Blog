@@ -9,9 +9,9 @@
 }
 
 @font-face {
-  font-family: 'aquatico-rg2';
+  font-family: "aquatico-rg2";
   font-display: swap;
-  src: url('~/static/fonts/Aquatico-Regular-2.otf'); /* IE9*/
+  src: url("~/static/fonts/Aquatico-Regular-2.otf"); /* IE9*/
 }
 
 html {
@@ -19,23 +19,25 @@ html {
   // 抗锯齿渲染
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: auto !important;
+  // overflow-y: auto !important;
+  // overflow-x: hidden;
 }
 
 body {
   line-height: 1.5;
   font-size: $S-Font-Size-Base;
-  font-family: 'Arial', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   width: 100vw;
   min-height: 100vh;
   position: relative;
   font-weight: 400;
   overflow-x: hidden;
+  overflow-y: auto !important;
 }
 .wrapper {
   width: 100%;
   position: relative;
-  height: 100vh;
+  // height: 100vh;
   overflow-x: hidden;
 }
 

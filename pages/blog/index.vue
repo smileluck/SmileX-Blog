@@ -79,7 +79,7 @@ export default {
     box-sizing: border-box;
     padding: 0 12px;
     position: sticky;
-    top: $S-Nav-Height;
+    top: $S-Nav-Height + 10px;
 
     .blog-ranking {
       padding: $S-Box-Padding;
@@ -140,6 +140,22 @@ export default {
           font-size: $S-Font-Size-Notice;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .header {
+    height: 480px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .content-article,
+    .content-aside {
+      width: 100%;
+      flex: 0 0 100%;
     }
   }
 }

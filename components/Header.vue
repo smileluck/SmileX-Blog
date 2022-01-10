@@ -1,6 +1,6 @@
 <template>
   <header class="layout-header">
-    <div class="header header-fixed" :class="headerFixed ? 'header-fixed' : ''">
+    <div class="header" :class="{ 'header-fixed': headerFixed }">
       <div class="container">
         <div class="header-logo"></div>
         <div class="header-toggle"></div>
@@ -34,17 +34,33 @@
 
 <script>
 export default {
-  date: () => ({
-    headerFixed: false,
-  }),
-  created() {
-    // .addEventListener('scroll', this.headerScroll)
+  data: function () {
+    return {
+      headerFixed: false,
+    }
+  },
+  mounted() {
+    this.headerScroll();
+    if (document) {
+      document.addEventListener('scroll', this.headerScroll)
+    }
+  },
+  beforeDestroy() {
+    if (document) {
+      document.removeEventListener('scroll', this.headerScroll)
+    }
   },
   methods: {
     headerScroll() {
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > 80) {
+      console.log(scrollTop)
+      if (scrollTop >= 100) {
+        if (!this.headerFixed) {
+          this.headerFixed = true
+        }
+      } else {
+        this.headerFixed = false
       }
     },
   },
@@ -65,18 +81,13 @@ export default {
     content: '';
   }
 }
-.header-fixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 90%);
-}
 .header {
   @include no-select;
-  overflow: hidden;
+  // overflow: hidden;
   height: $S-Nav-Height;
   z-index: 11;
 
+  color: #fff;
   .container {
     height: 100%;
     z-index: 11;
@@ -114,7 +125,6 @@ export default {
     align-items: center;
 
     &-item {
-      color: #fff;
       cursor: pointer;
       height: 100%;
       // padding: 22px 10px;
@@ -156,6 +166,30 @@ export default {
         background: rgba(0, 0, 0, 15%);
       }
     }
+  }
+}
+
+.header-fixed {
+  box-shadow: inset 0 0 10px rgb(255 255 255 / 80%);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 90%);
+  box-shadow: inset 0 0 2px hsl(0deg 0% 77% / 82%);
+  background: hsla(0, 0%, 100%, 0.363);
+  -webkit-backdrop-filter: saturate(200%) blur(30px);
+  backdrop-filter: saturate(200%) blur(30px);
+  // filter: saturate(200%) blur(30px);
+  color: #000;
+  animation: header-fixed-anim 0.5s ease-in-out;
+}
+
+@include keyframes(header-fixed-anim) {
+  from {
+    top: -$S-Nav-Height;
+  }
+  to {
+    top: 0;
   }
 }
 </style>
