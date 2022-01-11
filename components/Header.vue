@@ -54,7 +54,6 @@ export default {
     headerScroll() {
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop
-      console.log(scrollTop)
       if (scrollTop >= 100) {
         if (!this.headerFixed) {
           this.headerFixed = true

@@ -13,6 +13,8 @@
     - viewer
     - comment
     - calendar
+    - 3 points for page btn
+    - prev and next arrow 
 - [  ] logo
 - [ ] Blog Home banner wave
 
