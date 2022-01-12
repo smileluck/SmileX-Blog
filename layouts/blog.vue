@@ -2,9 +2,7 @@
   <div class="wrapper">
     <div class="layout-blog">
       <Header />
-      <div class="layout-content">
-        <nuxt />
-      </div>
+      <nuxt />
     </div>
   </div>
 </template>

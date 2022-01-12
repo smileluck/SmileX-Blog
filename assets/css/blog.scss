@@ -1,0 +1,22 @@
+.blog-panel {
+    padding: $S-Box-Padding;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    // border: 1px solid #555555;
+    box-shadow: $S-Box-Shadow;
+    border-radius: $S-Box-Border-Radius;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    @include transition(all 0.3s);
+    &:hover {
+        box-shadow: $S-Box-Shadow-Hover;
+    }
+    &-name {
+        font-size: $S-Font-Size-Head18;
+        color: $S-Font-Color-Gray-Deep;
+        margin-bottom: 8px;
+    }
+}

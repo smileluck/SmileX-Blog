@@ -31,6 +31,7 @@ export default {
     '@/assets/css/layouts.scss',
     '@/assets/css/media.scss',
     '@/assets/css/smilex/index.scss',
+    '@/assets/css/blog.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

@@ -24,15 +24,19 @@
       </div>
       <aside class="content-aside">
         <BlogRanking />
+        <blog-tags />
+        <blog-comment />
       </aside>
     </div>
   </main>
 </template>
 
 <script>
+import BlogComment from '~/components/blog/BlogComment.vue'
+import BlogTags from '~/components/blog/BlogTags.vue'
 import SxPagination from '~/components/smilex/SxPagination.vue'
 export default {
-  components: { SxPagination },
+  components: { SxPagination, BlogTags, BlogComment },
   layout: 'blog',
   methods: {
     pageOnclick() {

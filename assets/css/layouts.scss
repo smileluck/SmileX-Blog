@@ -53,10 +53,10 @@
     flex: 0 0 66%;
   }
   &-aside {
-    width: 33%;
-    flex: 0 0 33%;
+    width: 32%;
+    flex: 0 0 32%;
     box-sizing: border-box;
-    padding: 0 12px;
+    // margin-left: 12px;
     position: sticky;
     top: $S-Nav-Height + 10px;
   }
