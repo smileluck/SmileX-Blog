@@ -4,7 +4,7 @@
       <div class="smilex-section-header">HOME</div>
     </div>
     <div class="container content-container">
-      <div class="content-article">
+      <div class="content-main">
         <div class="content-article-list">
           <BlogArticle />
           <BlogArticle />
@@ -39,9 +39,6 @@ export default {
   components: { SxPagination, BlogTags, BlogComment },
   layout: 'blog',
   methods: {
-    pageOnclick() {
-      console.log()
-    },
   },
 }
 </script>

@@ -67,7 +67,7 @@ $inner-width: 600px;
   width: 100%;
   height: 100%;
 
-  & .home-main {
+  .home-main {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;

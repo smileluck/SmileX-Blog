@@ -41,9 +41,9 @@ export default {}
     display: flex;
     cursor: pointer;
     // margin-top: 4px;
-    margin-bottom: 8px;
+    // margin-bottom: 10px;
     flex-direction: column;
-    padding-bottom: 8px;
+    padding: 16px 0;
     border-bottom: 1px solid $S-Border-Color-Gray;
   }
   &-info {
@@ -53,7 +53,6 @@ export default {}
     &_name {
       display: inline-block;
       @include text-ellipsis(1);
-      color: $S-Font-Color-Gray;
     }
     &_date {
       display: inline-block;
@@ -63,6 +62,7 @@ export default {}
   }
   &-content {
     font-size: $S-Font-Size-Base;
+    color: $S-Font-Color-Gray-Deep;
     @include text-ellipsis(1);
   }
 }

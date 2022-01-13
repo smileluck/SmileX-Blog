@@ -20,3 +20,10 @@
         margin-bottom: 8px;
     }
 }
+
+.blog-article-panel {
+    @extend .blog-panel;
+    .blog-panel-name {
+        
+    }
+}
