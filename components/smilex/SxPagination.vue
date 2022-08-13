@@ -94,7 +94,6 @@ export default {
       this.updateData()
     },
     updateData() {
-      console.log('updateData')
       let start = this.pageCount > 5 && this.current >= 5 ? this.current - 2 : 1
       let end =
         start == 1
@@ -113,7 +112,6 @@ export default {
         arr = arr.concat(['R5', this.pageCount])
       }
       this.showPages = arr
-      console.log('updateData', start, end, arr)
     },
   },
 }

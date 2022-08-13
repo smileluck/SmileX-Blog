@@ -38,7 +38,17 @@ import SxPagination from '~/components/smilex/SxPagination.vue'
 export default {
   components: { SxPagination, BlogTags, BlogComment },
   layout: 'blog',
-  methods: {
+  data() {
+    return {
+      list: [],
+    }
+  },
+  created() {
+    this.$axios
+      .get(`/open/blog/${this.$store.state.tenantId}/article/home`)
+      .then((res) => {
+        this.list = res.data
+      })
   },
 }
 </script>

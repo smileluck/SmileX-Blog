@@ -5,6 +5,7 @@ export default function ({ $axios, redirect }) {
 
     $axios.onResponse(response => {
         console.log("Get response with ：" + response);
+        return response.data
     })
 
     $axios.onRequestError(error => {
