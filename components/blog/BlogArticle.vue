@@ -1,25 +1,34 @@
 <template>
   <div class="smilex-article">
     <div class="smilex-article-img">
-      <a href="#" title="测试title">
-        <img src="~/static/images/home/home-back.jpg" alt="测试title" />
+      <a href="#" :title="article.articleTitle">
+        <img
+          :src="
+            !!article.poster
+              ? article.poster
+              : require('~/static/images/home/home-back.jpg')
+          "
+          :alt="article.articleTitle"
+        />
       </a>
     </div>
     <div class="smilex-article-info">
       <div class="smilex-article-info-top">
         <p class="smilex-article-info_type">
-          <a href="#" title="查看<JAVA>分类下的所有文件">Java</a>
+          <a href="#" :title="`查看${article.sectionName}分类下的所有文件`">{{
+            article.sectionName
+          }}</a>
         </p>
-        <div class="smilex-article-info_title">java8基础总结</div>
+        <div class="smilex-article-info_title">{{ article.articleTitle }}</div>
         <div class="smilex-article-info_abstract">
-          阿斯蒂芬卡萨丁开发了撒旦弗利萨打开；弗利萨打开；劳动法卡；老师的疯狂拉升的看法‘奥斯卡嗲放阿萨阿斯蒂芬卡萨丁开发了撒旦弗利萨打开；弗利萨打开；劳动法卡；老师的疯狂拉升的看法‘奥斯卡嗲放阿萨阿斯蒂芬卡萨丁开发了撒旦弗利萨打开；弗利萨打开；劳动法卡；老师的疯狂拉升的看法‘奥斯卡嗲放阿萨阿斯蒂芬卡萨丁开发了撒旦弗利萨打开；弗利萨打开；劳动法卡；老师的疯狂拉升的看法‘奥斯卡嗲放阿萨
+          {{ article.articleDigest }}
         </div>
       </div>
       <div class="smilex-article-info-bottom">
-        <div class="smilex-article-info_date">Post on 2021-01-01</div>
+        <div class="smilex-article-info_date">Post on {{ postDate }}</div>
         <div class="smilex-article-info_viewer">
-          <div class="smilex-article-viewer_pcount">14</div>
-          <div class="smilex-article-viewer_pcomment">10</div>
+          <div class="smilex-article-viewer_pcount">99</div>
+          <div class="smilex-article-viewer_pcomment">99</div>
         </div>
       </div>
     </div>
@@ -27,7 +36,34 @@
 </template>
 
 <script>
-export default {}
+const dayjs = require('dayjs')
+export default {
+  props: {
+    article: {
+      type: Object,
+    },
+    // sectionName: {
+    //   type: String,
+    // },
+    // articleTitle: {
+    //   type: String,
+    // },
+    // articleDigest: {
+    //   type: String,
+    // },
+    // createTime: {
+    //   type: String,
+    // },
+    // updateTime: {
+    //   type: String,
+    // },
+  },
+  computed: {
+    postDate() {
+      return dayjs(this.article.createTime).format('YYYY-MM-DD')
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

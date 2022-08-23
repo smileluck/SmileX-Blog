@@ -6,20 +6,15 @@
     <div class="container content-container">
       <div class="content-main">
         <div class="content-article-list">
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
-          <BlogArticle />
+          <BlogArticle v-for="item in list" :key="item.id" :article="item" />
         </div>
         <div style="text-align: center">
-          <sx-pagination />
+          <sx-pagination
+            :current="page.current"
+            :totalCount="page.totalCount"
+            :size="page.size"
+            v-on:change="pageChange"
+          />
         </div>
       </div>
       <aside class="content-aside">
@@ -41,14 +36,39 @@ export default {
   data() {
     return {
       list: [],
+      page: {
+        totalCount: 10,
+        current: 1,
+        size: 10,
+      },
     }
   },
   created() {
-    this.$axios
-      .get(`/open/blog/${this.$store.state.tenantId}/article/home`)
-      .then((res) => {
-        this.list = res.data
-      })
+    this.getPageList()
+  },
+  methods: {
+    pageChange(current, size) {
+      this.page.current = current
+      this.page.size = size
+      this.getPageList()
+    },
+    getPageList() {
+      this.$axios
+        .get(`/open/blog/${this.$store.state.tenantId}/article/home`, {
+          params: {
+            current: this.page.current,
+            size: this.page.size,
+          },
+        })
+        .then((res) => {
+          if (res.success) {
+            this.list = res.data.records
+            this.page.totalCount = res.data.totalCount
+            this.page.size = res.data.size
+            this.page.current = res.data.current
+          }
+        })
+    },
   },
 }
 </script>

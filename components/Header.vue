@@ -2,25 +2,26 @@
   <header class="layout-header">
     <div class="header" :class="{ 'header-fixed': headerFixed }">
       <div class="container">
-        <div class="header-logo"></div>
+        <div class="header-logo">
+          <img src="~/static/images/logo.png" alt="笑笑庄" />
+        </div>
         <div class="header-toggle"></div>
         <div class="header-collapse">
           <ul class="header-list">
-            <li class="header-list-item">
-              <span class="item-link">BLOG居</span>
-            </li>
-            <li class="header-list-item">
-              <span class="item-link">探索世界</span>
+            <li
+              class="header-list-item"
+              v-for="item in sectionList"
+              :key="item.id"
+            >
+              <span class="item-link">{{ item.sectionName }}</span>
               <div class="header-dropdown">
                 <ul class="header-dropdown-list">
-                  <li class="header-dropdown-item">
-                    <span>技术之旅</span>
-                  </li>
-                  <li class="header-dropdown-item">
-                    <span>生活技巧</span>
-                  </li>
-                  <li class="header-dropdown-item">
-                    <span>学点厨艺</span>
+                  <li
+                    class="header-dropdown-item"
+                    v-for="child in item.children"
+                    :key="child.id"
+                  >
+                    <span>{{ child.sectionName }}</span>
                   </li>
                 </ul>
               </div>
@@ -37,13 +38,15 @@ export default {
   data: function () {
     return {
       headerFixed: false,
+      sectionList: [],
     }
   },
   mounted() {
-    this.headerScroll();
+    this.headerScroll()
     if (document) {
       document.addEventListener('scroll', this.headerScroll)
     }
+    this.getSection()
   },
   beforeDestroy() {
     if (document) {
@@ -62,7 +65,32 @@ export default {
         this.headerFixed = false
       }
     },
+    getSection() {
+      this.$axios
+        .get(`/open/blog/${this.$store.state.tenantId}/section/list`)
+        .then((res) => {
+          if (res.success) {
+            const list = dynamicTree(res.data, 0)
+            console.log('list', list)
+            this.sectionList = list
+          }
+        })
+    },
   },
+}
+// 数组递归转换树目录结构
+const dynamicTree = (list, pid) => {
+  const arr = []
+  list.forEach((item) => {
+    if (item.parentId == pid) {
+      const children = dynamicTree(list, item.id)
+      if (children.length != 0) {
+        item.children = children
+      }
+      arr.push(item)
+    }
+  })
+  return arr
 }
 </script>
 
@@ -93,9 +121,13 @@ export default {
   }
   &-logo {
     width: 100px;
-    background-color: blue;
     height: 100%;
     cursor: pointer;
+    text-align: center;
+    > img {
+      width: 100%;
+      height: 100%;
+    }
   }
   &-collapse {
     width: 100%;
@@ -132,6 +164,8 @@ export default {
       display: flex;
       align-items: center;
       font-weight: 600;
+      width: 100px;
+      text-align: center;
       .item-link {
         display: block;
         padding: 0 10px;

@@ -1,7 +1,7 @@
 <template>
-  <div class="smilex-pagination">
+  <div class="smilex-pagination" v-if="pageCount != 1">
     <div
-      @click="pageHandle(current - 1)"
+      @click="pageHandle($data._current - 1)"
       class="smilex-pagination-prev"
       :class="!isFirst ? 'smilex-pagination-btn' : 'smilex-pagination-disable'"
     >
@@ -11,10 +11,12 @@
       <template v-for="item in showPages">
         <li
           v-if="item === 'L5' || item === 'R5'"
-          @click="pageHandle(item === 'L5' ? current - 5 : current + 5)"
+          @click="
+            pageHandle(item === 'L5' ? $data._current - 5 : $data._current + 5)
+          "
           :key="item"
           class="smilex-pagination-pager-item smilex-pagination-btn"
-          :class="{ 'smilex-pagination-btn_active': current == item }"
+          :class="{ 'smilex-pagination-btn_active': $data._current == item }"
         >
           <a :title="item === 'L5' ? '向前5页' : '向后5页'">...</a>
         </li>
@@ -22,7 +24,7 @@
           v-else
           @click="pageHandle(item)"
           class="smilex-pagination-pager-item smilex-pagination-btn"
-          :class="{ 'smilex-pagination-btn_active': current == item }"
+          :class="{ 'smilex-pagination-btn_active': $data._current == item }"
           :key="item"
         >
           <a :title="item">{{ item }}</a>
@@ -30,7 +32,7 @@
       </template>
     </ul>
     <div
-      @click="pageHandle(current + 1)"
+      @click="pageHandle($data._current + 1)"
       class="smilex-pagination-next"
       :class="!isLast ? 'smilex-pagination-btn' : 'smilex-pagination-disable'"
     >
@@ -44,37 +46,36 @@ export default {
   props: {
     totalCount: {
       type: Number,
-      default: 1000,
+      default: 0,
     },
     current: {
       type: Number,
       default: 1,
     },
-    pageSize: {
+    size: {
       type: Number,
       default: 10,
     },
     hideOnSinglePage: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   data() {
     return {
+      _current: this.current,
       showPages: [],
     }
   },
   computed: {
     isFirst() {
-      return this.current == 1
+      return this.$data._current == 1
     },
     isLast() {
-      return this.current == this.pageCount
+      return this.$data._current == this.pageCount
     },
     pageCount() {
-      return this.totalCount === 0
-        ? 1
-        : Math.ceil(this.totalCount / this.pageSize)
+      return this.totalCount === 0 ? 1 : Math.ceil(this.totalCount / this.size)
     },
   },
   mounted() {
@@ -82,25 +83,31 @@ export default {
   },
   methods: {
     pageHandle(nextPage) {
-      if (this.current == 1 && nextPage <= 1) {
+      if (this.$data._current == 1 && nextPage <= 1) {
         return
       }
-      if (this.current == this.pageCount && nextPage >= this.pageCount) {
+      if (this.$data._current == this.pageCount && nextPage >= this.pageCount) {
         return
       }
       nextPage = nextPage < 1 ? 1 : nextPage
       nextPage = nextPage > this.pageCount ? this.pageCount : nextPage
-      this.current = nextPage;
+      this.$data._current = nextPage
       this.updateData()
+      this.$emit('change', this.$data._current, this.size)
     },
     updateData() {
-      let start = this.pageCount > 5 && this.current >= 5 ? this.current - 2 : 1
+      let start =
+        this.pageCount > 5 && this.$data._current >= 5
+          ? this.$data._current - 2
+          : 1
       let end =
         start == 1
-          ? 5
-          : this.pageCount - this.current < 5
+          ? this.pageCount > 5
+            ? 5
+            : this.pageCount
+          : this.pageCount - this.$data._current < 5
           ? this.pageCount
-          : this.current + 2
+          : this.$data._current + 2
       let arr = []
       for (let i = start; i <= end; i++) {
         arr.push(i)

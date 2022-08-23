@@ -18,7 +18,7 @@ export default {
   },
   created() {
     this.$axios
-      .get(`/open/blog/${this.$store.state.tenantId}/tags/list`)
+      .get(`/open/blog/${this.$store.state.tenantId}/tag/list`)
       .then((res) => {
         if (res.success) {
           this.list = res.data
