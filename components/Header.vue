@@ -3,7 +3,7 @@
     <div class="header" :class="{ 'header-fixed': headerFixed }">
       <div class="container">
         <div class="header-logo">
-          <img src="~/static/images/logo.png" alt="笑笑庄" />
+          <img src="~/static/images/logo2.png" alt="笑笑庄" />
         </div>
         <div class="header-toggle"></div>
         <div class="header-collapse">
@@ -213,7 +213,7 @@ const dynamicTree = (list, pid) => {
   -webkit-backdrop-filter: saturate(200%) blur(30px);
   backdrop-filter: saturate(200%) blur(30px);
   // filter: saturate(200%) blur(30px);
-  color: #000;
+  color: #fff;
   animation: header-fixed-anim 0.5s ease-in-out;
 }
 
