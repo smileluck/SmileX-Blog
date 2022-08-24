@@ -3,7 +3,14 @@
     <div class="header" :class="{ 'header-fixed': headerFixed }">
       <div class="container">
         <div class="header-logo">
-          <img src="~/static/images/logo2.png" alt="笑笑庄" />
+          <img
+            :src="
+              headerFixed
+                ? require('~/static/images/logo.png')
+                : require('~/static/images/logo2.png')
+            "
+            alt="笑笑庄"
+          />
         </div>
         <div class="header-toggle"></div>
         <div class="header-collapse">
@@ -12,6 +19,7 @@
               class="header-list-item"
               v-for="item in sectionList"
               :key="item.id"
+              @click="clickHandle(item)"
             >
               <span class="item-link">{{ item.sectionName }}</span>
               <div class="header-dropdown">
@@ -20,6 +28,7 @@
                     class="header-dropdown-item"
                     v-for="child in item.children"
                     :key="child.id"
+                    @click.stop="clickHandle(child)"
                   >
                     <span>{{ child.sectionName }}</span>
                   </li>
@@ -54,6 +63,26 @@ export default {
     }
   },
   methods: {
+    clickHandle(item) {
+      if (item.type == 2) {
+        return
+      }
+      switch (item.type) {
+        case 1:
+          this.$router.push({
+            path: '/blog',
+            query: { sectionId: item.id },
+          })
+          break
+        case 2:
+          break
+        case 3:
+          this.$router.push({
+            path: item.routeUrl,
+          })
+          break
+      }
+    },
     headerScroll() {
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop
@@ -169,6 +198,7 @@ const dynamicTree = (list, pid) => {
       .item-link {
         display: block;
         padding: 0 10px;
+        width: 100%;
       }
       &:hover {
         background: rgb(255 255 255 / 15%);
@@ -213,7 +243,7 @@ const dynamicTree = (list, pid) => {
   -webkit-backdrop-filter: saturate(200%) blur(30px);
   backdrop-filter: saturate(200%) blur(30px);
   // filter: saturate(200%) blur(30px);
-  color: #fff;
+  color: #000;
   animation: header-fixed-anim 0.5s ease-in-out;
 }
 

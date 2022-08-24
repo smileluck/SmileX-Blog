@@ -41,10 +41,22 @@ export default {
         current: 1,
         size: 10,
       },
+      sectionId: null,
     }
   },
   created() {
     this.getPageList()
+  },
+  updated() {
+    console.log(this.$route.query.sectionId)
+  },
+  watch: {
+    '$route.query'(to, from) {
+      console.log(to, from)
+      this.sectionId = to.sectionId
+      this.page.current = 1
+      this.getPageList()
+    },
   },
   methods: {
     pageChange(current, size) {
@@ -58,6 +70,7 @@ export default {
           params: {
             current: this.page.current,
             size: this.page.size,
+            sectionId: this.sectionId,
           },
         })
         .then((res) => {

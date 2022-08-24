@@ -59,72 +59,6 @@
           </p>
         </div>
       </div>
-      <div class="entry">
-        <div class="title">2017</div>
-        <div class="body">
-          <p>Qui facere eos aut suscipit doloremque quos...</p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">2016</div>
-        <div class="body">
-          <p>
-            Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
-            earum rerum quae dicta quibusdam aliquam ut.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">2017</div>
-        <div class="body">
-          <p>Qui facere eos aut suscipit doloremque quos...</p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">2016</div>
-        <div class="body">
-          <p>
-            Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
-            earum rerum quae dicta quibusdam aliquam ut.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">2017</div>
-        <div class="body">
-          <p>Qui facere eos aut suscipit doloremque quos...</p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">2016</div>
-        <div class="body">
-          <p>
-            Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
-            earum rerum quae dicta quibusdam aliquam ut.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">2017</div>
-        <div class="body">
-          <p>Qui facere eos aut suscipit doloremque quos...</p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">2016</div>
-        <div class="body">
-          <p>
-            Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
-            earum rerum quae dicta quibusdam aliquam ut.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">2017</div>
-        <div class="body">
-          <p>Qui facere eos aut suscipit doloremque quos...</p>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -135,7 +69,7 @@ export default {}
 
 <style lang="scss" scoped>
 .timeline {
-//   background-color: #1d1d1d;
+  //   background-color: #1d1d1d;
   min-height: 100vh;
   margin: 0;
   font-family: 'Droid Sans', sans-serif;
@@ -182,7 +116,7 @@ export default {}
           top: 50%;
           transform: translateY(-50%);
           right: -73px;
-          z-index: 1000;
+          z-index: 9;
         }
         &.big:before {
           width: 24px;
