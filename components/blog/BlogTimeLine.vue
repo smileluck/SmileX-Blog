@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="entry">
-        <div class="title big">2013</div>
+        <div class="title big"><sx-icon iconType="bilibili"></sx-icon>2013</div>
         <div class="body">
           <p>
             Rerum sit libero possimus amet excepturi. Exercitationem enim
@@ -51,6 +51,7 @@
         </div>
       </div>
       <div class="entry">
+        <SxIcon iconType="bilibili"></SxIcon>
         <div class="title big">2016</div>
         <div class="body">
           <p>
@@ -64,7 +65,31 @@
 </template>
 
 <script>
-export default {}
+import SxIcon from '../smilex/SxIcon.vue'
+export default {
+  components: { SxIcon },
+  data() {
+    return {
+      list: [],
+    }
+  },
+  created() {
+    this.getTimeline()
+  },
+  methods: {
+    getTimeline() {
+      this.$axios
+        .get(`/open/blog/${this.$store.state.tenantId}/timeline`)
+        .then((res) => {
+          if (res.success) {
+            this.list = res.data
+          } else {
+            this.list = []
+          }
+        })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
