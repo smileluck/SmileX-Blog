@@ -146,7 +146,7 @@ const dynamicTree = (list, pid) => {
   color: #fff;
   .container {
     height: 100%;
-    z-index: 11;
+    z-index: 91;
   }
   &-logo {
     width: 100px;

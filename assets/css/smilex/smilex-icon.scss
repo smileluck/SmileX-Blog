@@ -22,4 +22,13 @@
     &_bilibili {
         background: url("~/static/svg/bilibili.svg") center center / cover no-repeat;
     }
+    &_plan {
+        background: url("~/static/svg/plan.svg") center center / cover no-repeat;
+    }
+    &_finish {
+        background: url("~/static/svg/finish.svg") center center / cover no-repeat;
+    }
+    &_now {
+        background: url("~/static/svg/now.svg") center center / cover no-repeat;
+    }
 }

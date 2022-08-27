@@ -2,7 +2,9 @@
   <div class="timeline">
     <div class="entries">
       <div class="entry">
-        <div class="title">2011</div>
+        <div class="title">
+          <sx-icon class="icon" iconType="finish"></sx-icon>2011
+        </div>
         <div class="body">
           <p>
             Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum
@@ -12,13 +14,17 @@
         </div>
       </div>
       <div class="entry">
-        <div class="title">2012</div>
+        <div class="title">
+          <sx-icon class="icon" iconType="finish"></sx-icon>2012
+        </div>
         <div class="body">
           <p>Quo nobis cumque dolor iure voluptatem voluptatem alias soluta.</p>
         </div>
       </div>
       <div class="entry">
-        <div class="title big"><sx-icon iconType="bilibili"></sx-icon>2013</div>
+        <div class="title big">
+          <sx-icon class="icon" iconType="finish"></sx-icon>2013
+        </div>
         <div class="body">
           <p>
             Rerum sit libero possimus amet excepturi. Exercitationem enim
@@ -27,7 +33,9 @@
         </div>
       </div>
       <div class="entry">
-        <div class="title">2014</div>
+        <div class="title">
+          <sx-icon class="icon" iconType="finish"></sx-icon>2014
+        </div>
         <div class="body">
           <p>
             Voluptatibus veniam ea reprehenderit atque. Reiciendis non laborum
@@ -38,7 +46,9 @@
         </div>
       </div>
       <div class="entry">
-        <div class="title">2015</div>
+        <div class="title">
+          <sx-icon class="icon" iconType="now"></sx-icon>2015
+        </div>
         <div class="body">
           <p>
             VAdipisci totam omnis cum et suscipit excepturi et excepturi.
@@ -51,8 +61,9 @@
         </div>
       </div>
       <div class="entry">
-        <SxIcon iconType="bilibili"></SxIcon>
-        <div class="title big">2016</div>
+        <div class="title big">
+          <sx-icon class="icon" iconType="plan"></sx-icon>2016
+        </div>
         <div class="body">
           <p>
             Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
@@ -108,18 +119,18 @@ export default {
     bottom: 0px;
     transform: translateX(-50%);
     width: 4px;
-    background-color: #1d1d1d;
+    background-color: #d9d9d9;
   }
   .entries {
     width: calc(100% - 80px);
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     position: relative;
     left: -5px;
     .entry {
       width: calc(50% - 80px);
       float: left;
-      padding: 20px;
+      padding: 14px;
       clear: both;
       text-align: right;
       &:not(:first-child) {
@@ -130,23 +141,31 @@ export default {
         margin-bottom: 12px;
         position: relative;
         color: #1d1d1d;
+        display: flex;
+        align-items: center;
+        justify-content: right;
         &:before {
           content: '';
           position: absolute;
-          width: 8px;
-          height: 8px;
-          border: 4px solid #1d1d1d;
+          width: 36px;
+          height: 36px;
+          border: 4px solid #d9d9d9;
           background-color: #ffffff;
           border-radius: 100%;
           top: 50%;
-          transform: translateY(-50%);
-          right: -73px;
+          transform: translate(8px, -50%);
+          right: -85px;
           z-index: 9;
+          // background: url('~/static/svg/bilibili.svg') center center / cover no-repeat;
         }
-        &.big:before {
+        .icon {
+          position: absolute;
           width: 24px;
           height: 24px;
+          top: 50%;
           transform: translate(8px, -50%);
+          right: -83px;
+          z-index: 10;
         }
       }
       .body {
@@ -159,11 +178,12 @@ export default {
         text-align: left;
         float: right;
         .title {
+          justify-content: left;
           &:before {
-            left: -63px;
+            left: -91px;
           }
-          &.big:before {
-            transform: translate(-8px, -50%);
+          .icon {
+            left: -81px;
           }
         }
       }
