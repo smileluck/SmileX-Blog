@@ -1,74 +1,16 @@
 <template>
   <div class="timeline">
     <div class="entries">
-      <div class="entry">
+      <div v-for="item in list" :key="item.id" class="entry">
         <div class="title">
-          <sx-icon class="icon" iconType="finish"></sx-icon>2011
+          <sx-icon class="icon" :iconType="item.yearIcon"></sx-icon>
+          <div class="title-box">
+            <span class="year">{{ item.year }}</span>
+            <span class="summary">{{ item.title }}</span>
+          </div>
         </div>
         <div class="body">
-          <p>
-            Neque sunt voluptatibus repellat pariatur ut enim. Eveniet rerum
-            suscipit eveniet amet dignissimos. Doloremque et distinctio quod
-            molestiae ut.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">
-          <sx-icon class="icon" iconType="finish"></sx-icon>2012
-        </div>
-        <div class="body">
-          <p>Quo nobis cumque dolor iure voluptatem voluptatem alias soluta.</p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">
-          <sx-icon class="icon" iconType="finish"></sx-icon>2013
-        </div>
-        <div class="body">
-          <p>
-            Rerum sit libero possimus amet excepturi. Exercitationem enim
-            dolores sunt praesentium dolorum praesentium.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">
-          <sx-icon class="icon" iconType="finish"></sx-icon>2014
-        </div>
-        <div class="body">
-          <p>
-            Voluptatibus veniam ea reprehenderit atque. Reiciendis non laborum
-            adipisci ipsa pariatur omnis. Sed ipsam repudiandae velit. Omnis
-            libero nostrum aperiam nemo dolor ea eos eius. Esse a non itaque
-            quidem.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title">
-          <sx-icon class="icon" iconType="now"></sx-icon>2015
-        </div>
-        <div class="body">
-          <p>
-            VAdipisci totam omnis cum et suscipit excepturi et excepturi.
-            Inventore sequi sit ut aliquid. Modi aut dolores dignissimos.
-          </p>
-          <p>
-            Delectus facere officia consequuntur molestias deserunt illo.
-            Placeat laudantium beatae natus excepturi ab nihil voluptates.
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="title big">
-          <sx-icon class="icon" iconType="plan"></sx-icon>2016
-        </div>
-        <div class="body">
-          <p>
-            Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam
-            earum rerum quae dicta quibusdam aliquam ut.
-          </p>
+          <p>{{ item.description }}</p>
         </div>
       </div>
     </div>
@@ -76,6 +18,7 @@
 </template>
 
 <script>
+const dayjs = require('dayjs')
 import SxIcon from '../smilex/SxIcon.vue'
 export default {
   components: { SxIcon },
@@ -93,6 +36,17 @@ export default {
         .get(`/open/blog/${this.$store.state.tenantId}/timeline`)
         .then((res) => {
           if (res.success) {
+            let nowYear = parseInt(dayjs(new Date()).format('YYYY'))
+            for (let i = 0; i < res.data.length; i++) {
+              let tempYear = res.data[i].year
+              if (nowYear > tempYear) {
+                res.data[i].yearIcon = 'finish'
+              } else if (nowYear == tempYear) {
+                res.data[i].yearIcon = 'now'
+              } else {
+                res.data[i].yearIcon = 'plan'
+              }
+            }
             this.list = res.data
           } else {
             this.list = []
@@ -133,17 +87,32 @@ export default {
       padding: 14px;
       clear: both;
       text-align: right;
+      margin-bottom: 30px;
       &:not(:first-child) {
         margin-top: -60px;
       }
       .title {
-        font-size: 32px;
+        font-size: 28px;
         margin-bottom: 12px;
         position: relative;
         color: #1d1d1d;
         display: flex;
         align-items: center;
         justify-content: right;
+        &-box {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+
+          .year {
+            order: 2;
+          }
+          .summary {
+            font-size: 20px;
+            order: 1;
+          }
+        }
         &:before {
           content: '';
           position: absolute;
@@ -179,6 +148,14 @@ export default {
         float: right;
         .title {
           justify-content: left;
+          &-box {
+            .year {
+              order: 1;
+            }
+            .summary {
+              order: 2;
+            }
+          }
           &:before {
             left: -91px;
           }
