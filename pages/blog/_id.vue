@@ -7,9 +7,14 @@
       <div class="content-main">
         <div class="blog-article-panel blog-article">
           <div class="blog-article-main">
-            <p class="blog-article-meta">
-              <a href="#" title="查看<JAVA>分类下的所有文件">Java</a>
-            </p>
+            <div class="blog-article-meta">
+              <div class="back">
+                <sx-icon class="back-icon" iconType="back"></sx-icon
+                ><span>BACK</span>
+              </div>
+              <span class="separate"></span>
+              <a href="javascript:void" title="查看<JAVA>栏目">Java</a>
+            </div>
             <div class="blog-article-title">java8基础总结</div>
             <hr class="smilex-hr2" />
             <div class="blog-article-sept">
@@ -60,17 +65,38 @@
 </template>
 
 <script>
+import SxIcon from '@/components/smilex/SxIcon.vue'
 export default {
   layout: 'blog',
+  components: {
+    SxIcon,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .blog-article {
   &-meta {
+    display: flex;
+    align-items: center;
     font-size: $S-Font-Size-Head16;
-    cursor: pointer;
+    .back {
+      display: flex;
+      align-items: center;
+      &-icon {
+        width: 16px;
+        height: 16px;
+      }
+      cursor: pointer;
+    }
+    .separate {
+      margin: 0 8px;
+      width: 1px;
+      height: $S-Font-Size-Head16;
+      border-left: 1px solid #8a8a8a;
+    }
     > a {
+      cursor: pointer;
       color: $S-Font-Color-Red;
     }
   }

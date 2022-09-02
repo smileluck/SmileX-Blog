@@ -31,4 +31,10 @@
     &_now {
         background: url("~/static/svg/now.svg") center center / cover no-repeat;
     }
+    &_lock {
+        background: url("~/static/svg/lock.svg") center center / cover no-repeat;
+    }
+    &_back {
+        background: url("~/static/svg/back.svg") center center / cover no-repeat;
+    }
 }

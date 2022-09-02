@@ -1,7 +1,7 @@
 <template>
-  <div class="smilex-article">
+  <div class="smilex-article" @click="navDetail(article.id)">
     <div class="smilex-article-img">
-      <a href="#" :title="article.articleTitle">
+      <a href="javascript:void" :title="article.articleTitle">
         <img
           :src="
             !!article.poster
@@ -14,10 +14,15 @@
     </div>
     <div class="smilex-article-info">
       <div class="smilex-article-info-top">
+        <sx-icon class="lock" iconType="lock"></sx-icon>
         <p class="smilex-article-info_type">
-          <a href="#" :title="`查看${article.sectionName}分类下的所有文件`">{{
-            article.sectionName
-          }}</a>
+          <a
+            href="javascript:void"
+            :title="`查看${article.sectionName}栏目`"
+            @click.stop="navSection(article.sectionId)"
+          >
+            {{ article.sectionName }}</a
+          >
         </p>
         <div class="smilex-article-info_title">{{ article.articleTitle }}</div>
         <div class="smilex-article-info_abstract">
@@ -36,6 +41,7 @@
 </template>
 
 <script>
+import SxIcon from '../smilex/SxIcon.vue'
 const dayjs = require('dayjs')
 export default {
   props: {
@@ -58,9 +64,25 @@ export default {
     //   type: String,
     // },
   },
+  components: {
+    SxIcon,
+  },
   computed: {
     postDate() {
       return dayjs(this.article.createTime).format('YYYY-MM-DD')
+    },
+  },
+  methods: {
+    navDetail(id) {
+      this.$router.push({
+        path: '/blog/' + id,
+      })
+    },
+    navSection(id) {
+      this.$router.push({
+        path: '/blog',
+        query: { sectionId: id },
+      })
     },
   },
 }
@@ -81,6 +103,7 @@ export default {
   align-items: center;
   position: relative;
   height: 240px;
+  cursor: pointer;
   @include transition(all 0.3s);
   &:hover {
     box-shadow: $S-Box-Shadow-Hover;
@@ -95,6 +118,14 @@ export default {
     position: relative;
     &-top {
       height: 60%;
+      position: relative;
+      .lock {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 15px;
+        height: 15px;
+      }
     }
     &-bottom {
       padding: 14px 0 0 0;
@@ -107,7 +138,6 @@ export default {
     }
     &_type {
       font-size: $S-Font-Size-Head18;
-      cursor: pointer;
       > a {
         color: $S-Font-Color-Red;
       }
