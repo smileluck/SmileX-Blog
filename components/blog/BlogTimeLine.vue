@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 .timeline {
   //   background-color: #1d1d1d;
-  min-height: 100vh;
+  min-height: 50vh;
   margin: 0;
   font-family: 'Droid Sans', sans-serif;
   position: relative;
@@ -140,6 +140,7 @@ export default {
       .body {
         color: #aaa;
         p {
+          text-align: left;
           line-height: 1.4em;
         }
       }
