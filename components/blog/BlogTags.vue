@@ -2,7 +2,12 @@
   <div class="blog-panel blog-tags">
     <p class="blog-panel-name"><a href="#">标签云</a></p>
     <ul class="blog-tags-list">
-      <li v-for="(item, index) in list" :key="index" class="blog-tags-item">
+      <li
+        v-for="(item, index) in list"
+        :key="index"
+        class="blog-tags-item"
+        @click="navTag(item.id)"
+      >
         {{ item.tagName }}
       </li>
     </ul>
@@ -27,8 +32,15 @@ export default {
         }
       })
   },
+  methods: {
+    navTag(id) {
+      this.$router.push({
+        path: '/blog',
+        query: { tagId: id },
+      })
+    },
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -1,11 +1,10 @@
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Smile\'s HomePage | Good Lucky',
+    title: "Smile's HomePage | Good Lucky",
     htmlAttrs: {
       lang: 'en',
     },
@@ -19,7 +18,7 @@ export default {
   },
 
   env: {
-    API_BASE_HTTP: process.env.API_BASE_HTTP
+    API_BASE_HTTP: process.env.API_BASE_HTTP || 'http://localhost:3000',
   },
 
   loading: '@/components/Loading.vue',
@@ -35,9 +34,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/axios.js'
-  ],
+  plugins: ['~/plugins/axios.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -58,7 +55,13 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.API_BASE_HTTP,
-    progress: false
+    progress: false,
+  },
+
+  router: {
+    scrollBehavior(to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -14,7 +14,11 @@
     </div>
     <div class="smilex-article-info">
       <div class="smilex-article-info-top">
-        <sx-icon class="lock" iconType="lock"></sx-icon>
+        <sx-icon
+          class="lock"
+          iconType="lock"
+          v-if="article.visitType != 1"
+        ></sx-icon>
         <p class="smilex-article-info_type">
           <a
             href="javascript:void"
@@ -76,6 +80,10 @@ export default {
     navDetail(id) {
       this.$router.push({
         path: '/blog/' + id,
+        query: {
+          sectionId: this.$route.query.sectionId,
+          tagId: this.$route.query.tagId,
+        },
       })
     },
     navSection(id) {

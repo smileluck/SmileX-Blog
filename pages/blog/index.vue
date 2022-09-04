@@ -42,18 +42,16 @@ export default {
         size: 10,
       },
       sectionId: null,
+      tagId: null,
     }
   },
   created() {
     this.getPageList()
   },
-  updated() {
-    console.log(this.$route.query.sectionId)
-  },
   watch: {
     '$route.query'(to, from) {
-      console.log(to, from)
       this.sectionId = to.sectionId
+      this.tagId = to.tagId
       this.page.current = 1
       this.getPageList()
     },
@@ -65,12 +63,15 @@ export default {
       this.getPageList()
     },
     getPageList() {
+      this.sectionId = this.$route.query.sectionId
+      this.tagId = this.$route.query.tagId
       this.$axios
         .get(`/open/blog/${this.$store.state.tenantId}/article/home`, {
           params: {
             current: this.page.current,
             size: this.page.size,
             sectionId: this.sectionId,
+            tagId: this.tagId,
           },
         })
         .then((res) => {
@@ -86,5 +87,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

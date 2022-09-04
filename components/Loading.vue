@@ -1,7 +1,7 @@
 <template lang="html">
-    <div class="loading-wrapper" v-if="loading">
-        <sx-spin spinType="heart"></sx-spin>
-    </div>
+  <div class="loading-wrapper" v-if="loading">
+    <sx-spin spinType="heart"></sx-spin>
+  </div>
 </template>
 
 <script>
@@ -17,7 +17,9 @@ export default {
       this.loading = true
     },
     finish() {
-      this.loading = false
+      setTimeout(() => {
+        this.loading = false
+      }, 500)
     },
   },
 }
