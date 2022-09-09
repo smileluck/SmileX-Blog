@@ -23,11 +23,14 @@
         </div>
         <div class="home-enter">
           <sx-button @click.native="navRoute('/blog')">博客</sx-button>
-          <sx-button @click.native="navRoute('/blog')">计划</sx-button>
-          <sx-button @click.native="navRoute('/blog')">工具</sx-button>
+          <sx-button @click.native="navRoute('/plan')">计划</sx-button>
+          <sx-button @click.native="navRoute('/tool')">工具</sx-button>
         </div>
         <div class="home-outer-enter">
-          <sx-icon iconType="github"></sx-icon>
+          <sx-icon
+            iconType="github"
+            @click.native="openWebsite('https://github.com/smileluck')"
+          ></sx-icon>
           <sx-icon iconType="bilibili"></sx-icon>
         </div>
       </div>
@@ -46,10 +49,12 @@ export default {
   }),
   methods: {
     navRoute(path) {
-      console.log(this.$router)
       this.$router.push({
         path: path,
       })
+    },
+    openWebsite(path) {
+      window.open(path, '_blank')
     },
     avaterMouseMove() {},
   },

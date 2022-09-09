@@ -3,6 +3,7 @@
     <div class="layout-blog">
       <Header />
       <nuxt />
+      <Footer />
     </div>
   </div>
 </template>
