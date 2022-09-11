@@ -1,6 +1,6 @@
 <template>
   <div class="blog-panel blog-tags">
-    <p class="blog-panel-name"><a href="#">标签云</a></p>
+    <p class="blog-panel-name">标签云</p>
     <ul class="blog-tags-list">
       <li
         v-for="(item, index) in list"

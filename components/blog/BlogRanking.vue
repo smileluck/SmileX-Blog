@@ -1,39 +1,71 @@
 <template>
   <div class="blog-panel blog-ranking">
-    <p class="blog-panel-name"><a href="#">排行榜</a></p>
-    <div class="blog-ranking-list">
-      <div class="blog-ranking-item">
+    <p class="blog-panel-name">排行榜</p>
+    <div class="blog-ranking-list" v-if="list.length > 0">
+      <div
+        class="blog-ranking-item"
+        v-for="item in list"
+        :key="item.id"
+        @click="navDetail(item.id)"
+      >
         <div class="blog-ranking-item_img">
-          <a href="#" title="测试title">
-            <img src="~/static/images/home/home-back2.jpg" alt="测试title" />
+          <a href="javascript:void" :title="item.articleTitle">
+            <img
+              :src="
+                !!item.poster
+                  ? item.poster
+                  : require('~/static/images/home/home-back.jpg')
+              "
+              :alt="item.articleTitle"
+            />
           </a>
         </div>
         <div class="blog-ranking-item_info">
-          <div class="blog-ranking-info_title">测试title</div>
-          <div class="blog-ranking-info_date">2022-01-01</div>
-        </div>
-      </div>
-      <div class="blog-ranking-item">
-        <div class="blog-ranking-item_img">
-          <a href="#" title="测试title">
-            <img src="~/static/images/home/home-back2.jpg" alt="测试title" />
-          </a>
-        </div>
-        <div class="blog-ranking-item_info">
-          <div class="blog-ranking-info_title">测试title</div>
-          <div class="blog-ranking-info_date">2022-01-01</div>
+          <div class="blog-ranking-info_title">{{ item.articleTitle }}</div>
+          <div class="blog-ranking-info_date">{{ item.createTime }}</div>
         </div>
       </div>
     </div>
+
+    <sx-empty-data style="width: 50%" v-else></sx-empty-data>
   </div>
 </template>
 
 <script>
-export default {}
+import SxEmptyData from '~/components/smilex/SxEmptyData.vue'
+export default {
+  components: { SxEmptyData },
+  data() {
+    return {
+      list: [],
+    }
+  },
+  created() {
+    this.$axios
+      .get(`/open/blog/${this.$store.state.tenantId}/article/top`)
+      .then((res) => {
+        if (res.success) {
+          this.list = res.data
+        } else {
+          this.list = []
+        }
+      })
+  },
+  methods: {
+    navDetail(id) {
+      this.$router.push({
+        path: '/blog/' + id,
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
 .blog-ranking {
+  .blog-panel-name {
+    cursor: auto;
+  }
   &-list {
     display: flex;
     flex-direction: column;

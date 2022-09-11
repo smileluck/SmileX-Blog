@@ -5,9 +5,10 @@
     </div>
     <div class="container content-container">
       <div class="content-main">
-        <div class="content-article-list">
+        <div class="content-article-list" v-if="list.length > 0">
           <BlogArticle v-for="item in list" :key="item.id" :article="item" />
         </div>
+        <sx-empty-data v-else></sx-empty-data>
         <div style="text-align: center">
           <sx-pagination
             :current="page.current"
@@ -20,7 +21,8 @@
       <aside class="content-aside">
         <BlogRanking />
         <blog-tags />
-        <blog-comment />
+        <!-- <blog-comment /> -->
+        <blog-work />
       </aside>
     </div>
   </main>
@@ -28,10 +30,12 @@
 
 <script>
 import BlogComment from '~/components/blog/BlogComment.vue'
+import BlogWork from '~/components/blog/BlogWork.vue'
 import BlogTags from '~/components/blog/BlogTags.vue'
+import SxEmptyData from '~/components/smilex/SxEmptyData.vue'
 import SxPagination from '~/components/smilex/SxPagination.vue'
 export default {
-  components: { SxPagination, BlogTags, BlogComment },
+  components: { SxPagination, BlogTags, BlogComment, SxEmptyData, BlogWork },
   layout: 'blog',
   data() {
     return {

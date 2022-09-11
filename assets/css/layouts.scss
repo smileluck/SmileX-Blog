@@ -49,12 +49,12 @@
   flex-direction: row;
   justify-content: space-between;
   &-main {
-    width: 66%;
-    flex: 0 0 66%;
+    width: 72%;
+    flex: 0 0 72%;
   }
   &-aside {
-    width: 32%;
-    flex: 0 0 32%;
+    width: 26%;
+    flex: 0 0 26%;
     box-sizing: border-box;
     // margin-left: 12px;
     position: sticky;
