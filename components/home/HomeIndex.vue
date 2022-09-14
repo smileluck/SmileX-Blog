@@ -49,6 +49,9 @@ export default {
   }),
   methods: {
     navRoute(path) {
+      if (path != '/blog') {
+        
+      }
       this.$router.push({
         path: path,
       })

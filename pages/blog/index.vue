@@ -1,7 +1,7 @@
 <template>
   <main class="layout-content">
     <div class="container">
-      <div class="smilex-section-header">HOME</div>
+      <div class="smilex-section-header" @click="notifyTest()">HOME</div>
     </div>
     <div class="container content-container">
       <div class="content-main">
@@ -61,6 +61,12 @@ export default {
     },
   },
   methods: {
+    notifyTest() {
+      this.$alert({
+        title: '12211',
+        content: '111',
+      })
+    },
     pageChange(current, size) {
       this.page.current = current
       this.page.size = size

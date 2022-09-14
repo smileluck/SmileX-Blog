@@ -15,26 +15,32 @@
     &_svg {
         width: 100%;
         height: 100%;
+        background: center center / cover no-repeat;
     }
-    &_github {
-        background: url("~/static/svg/github.svg") center center / cover no-repeat;
-    }
-    &_bilibili {
-        background: url("~/static/svg/bilibili.svg") center center / cover no-repeat;
-    }
-    &_plan {
-        background: url("~/static/svg/plan.svg") center center / cover no-repeat;
-    }
-    &_finish {
-        background: url("~/static/svg/finish.svg") center center / cover no-repeat;
-    }
-    &_now {
-        background: url("~/static/svg/now.svg") center center / cover no-repeat;
-    }
-    &_lock {
-        background: url("~/static/svg/lock.svg") center center / cover no-repeat;
-    }
-    &_back {
-        background: url("~/static/svg/back.svg") center center / cover no-repeat;
-    }
+    // &_github {
+    //     @include sxIcon("github")
+    // }
+    // &_bilibili {
+    //     @include sxIcon("bilibili")
+    // }
+    // &_plan {
+    //     @include sxIcon("plan")
+    // }
+    // &_finish {
+    //     @include sxIcon("finish")
+    // }
+    // &_now {
+    //     @include sxIcon("now")
+    // }
+    // &_lock {
+    //     @include sxIcon("lock")
+    // }
+    // &_back {
+    //     @include sxIcon("back")
+    // }
+    // &_notify{
+    //     &-info{
+
+    //     }
+    // }
 }
