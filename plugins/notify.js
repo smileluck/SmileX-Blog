@@ -13,9 +13,9 @@ function notifyAlert(options, timeout = 3000) {
     let instance = new NotifyCompont().$mount();
     Object.assign(instance, options)
     document.body.appendChild(instance.$el);
-    // setTimeout(() => {
-    //     instance.$el.remove();
-    // }, timeout)
+    setTimeout(() => {
+        instance.$el.remove();
+    }, timeout)
 }
 
 Vue.prototype.$alert = notifyAlert; 
