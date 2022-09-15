@@ -1,8 +1,8 @@
 <template>
-  <div class="smilex-notify" role="notify">
+  <div :class="['smilex-notify', 'smilex-notify_' + type]" role="notify">
     <div class="notify-title">
       <sx-icon :iconType="type" class="icon"></sx-icon>
-      <p>
+      <p class="content">
         {{ title }}
       </p>
     </div>
@@ -36,7 +36,6 @@ export default {
   left: 50%;
   top: 20px;
   transform: translatex(-50%);
-  background-color: #f4f4f5;
   padding: 20px;
   border-radius: 5px;
   // @include transition(all 0.3s);
@@ -51,12 +50,35 @@ export default {
       height: 20px;
       position: relative;
     }
-    > p {
+    .content {
       position: relative;
       font-weight: 400;
-      color: #909399;
       line-height: 1;
       font-size: 16px;
+    }
+  }
+  &_info {
+    background-color: $S-color-info-light-9;
+    .content {
+      color: $S-color-info;
+    }
+  }
+  &_success {
+    background-color: $S-color-success-light-9;
+    .content {
+      color: $S-color-success;
+    }
+  }
+  &_error {
+    background-color: $S-color-error-light-9;
+    .content {
+      color: $S-color-error;
+    }
+  }
+  &_warning {
+    background-color: $S-color-warning-light-9;
+    .content {
+      color: $S-color-warning;
     }
   }
 }

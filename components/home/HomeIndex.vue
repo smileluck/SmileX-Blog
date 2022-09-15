@@ -31,7 +31,7 @@
             iconType="github"
             @click.native="openWebsite('https://github.com/smileluck')"
           ></sx-icon>
-          <sx-icon iconType="bilibili"></sx-icon>
+          <!-- <sx-icon iconType="bilibili"></sx-icon> -->
         </div>
       </div>
     </div>
@@ -50,7 +50,10 @@ export default {
   methods: {
     navRoute(path) {
       if (path != '/blog') {
-        
+        this.$alert({
+          title: '暂未开发',
+        })
+        return
       }
       this.$router.push({
         path: path,
