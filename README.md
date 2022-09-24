@@ -1,4 +1,5 @@
 # smilex-blog
+一款个人博客网站
 
 ## framework
 - dayjs。[官网](https://dayjs.gitee.io/zh-CN/)
