@@ -29,13 +29,7 @@
                 <div class="blog-article-viewer_pcomment">10</div>
               </div> -->
             </div>
-            <div class="blog-article-detail">
-              {{
-                article.articleContent != null
-                  ? article.articleContent
-                  : article.articleDigest
-              }}
-            </div>
+            <div class="blog-article-detail" ref="articleDetail"></div>
             <div
               class="blog-lock"
               v-if="article.visitType != 1 && article.articleContent == null"
@@ -94,6 +88,7 @@
         </div>
       </div>
       <aside class="content-aside">
+        <div ref="articleOutline" style="display: none"></div>
         <BlogRanking />
         <blog-tags />
         <blog-comment />
@@ -106,6 +101,9 @@
 import SxIcon from '@/components/smilex/SxIcon.vue'
 import SxButton from '@/components/smilex/SxButton.vue'
 const dayjs = require('dayjs')
+import VditorPreview from 'vditor/dist/method.min'
+import 'vditor/dist/index.css'
+
 export default {
   layout: 'blog',
   components: {
@@ -144,7 +142,48 @@ export default {
     )
     detailRes.data.tagNames = detailRes.data.tagNames.split(',')
     detailRes.data.tagIds = detailRes.data.tagIds.split(',')
+
     return { article: detailRes.data, lnInfo: lnRes.data }
+  },
+  watch: {
+    article: {
+      immediate: true,
+      handler(to, from) {
+        //监听之后执行的回调
+        this.$nextTick(() => {
+          // const articleOutline = this.$refs.articleOutline
+          const articleDetail = this.$refs.articleDetail
+          VditorPreview.preview(
+            articleDetail,
+            to.articleContent != null ? to.articleContent : to.articleDigest,
+
+            {
+              anchor: 1,
+              lazyLoadImage:
+                'https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/common/loading.gif',
+              markdown: {
+                toc: true,
+              },
+              // after() {
+              //   if (to.articleContent == null) {
+              //     return
+              //   }
+              //   VditorPreview.outlineRender(articleDetail, articleOutline)
+              //   if (articleOutline.innerText.trim() !== '') {
+              //     articleOutline.style.display = 'block'
+              //   }
+              // },
+            }
+          )
+        })
+      },
+    },
+  },
+  beforeMount() {
+    this.$store.commit('setSmallHeader', true)
+  },
+  beforeDestroy() {
+    this.$store.commit('setSmallHeader', false)
   },
   methods: {
     backHandle() {
