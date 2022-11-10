@@ -1,5 +1,8 @@
 <template>
-  <header class="layout-header">
+  <header
+    class="layout-header"
+    :class="{ 'layout-header-small': $store.state.smallHeader }"
+  >
     <div class="header" :class="{ 'header-fixed': headerFixed }">
       <div class="container">
         <div class="header-logo">

@@ -6,7 +6,7 @@
           :src="
             !!article.poster
               ? article.poster
-              : require('~/static/images/home/home-back.jpg')
+              : require('~/static/images/book.jpg')
           "
           :alt="article.articleTitle"
         />
