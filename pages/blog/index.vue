@@ -2,6 +2,9 @@
   <main class="layout-content">
     <div class="container">
       <div class="smilex-section-header">HOME</div>
+      <!-- <div class="smilex-section-header" v-if="$store.state.choiceTag != null">
+        {{ $store.state.choiceTag.tagName }}
+      </div> -->
     </div>
     <div class="container content-container">
       <div class="content-main">
@@ -81,7 +84,7 @@ export default {
         .then((res) => {
           if (res.success) {
             this.list = res.data.records
-            this.page.totalCount = res.data.totalCount
+            this.page.totalCount = parseInt(res.data.total)
             this.page.size = res.data.size
             this.page.current = res.data.current
           }

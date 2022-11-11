@@ -1,7 +1,8 @@
 export const state = () => ({
   tenantId: '297516356822106112',
   unifyPass: null, // 统一密码
-  smallHeader: false
+  smallHeader: false,
+  choiceTag: null
 })
 
 export const getters = {
@@ -22,5 +23,8 @@ export const mutations = {
   },
   setSmallHeader(state, smallHeader) {
     state.smallHeader = smallHeader
+  },
+  setChoiceTag(state, choiceTag) {
+    state.choiceTag = choiceTag
   }
 }

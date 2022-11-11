@@ -6,7 +6,9 @@
           :src="
             !!article.poster
               ? article.poster
-              : require('~/static/images/book.jpg')
+              : require('~/static/images/book' +
+                  ((Math.random() * 4) >> 0) +
+                  '.jpg')
           "
           :alt="article.articleTitle"
         />
