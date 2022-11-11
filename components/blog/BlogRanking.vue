@@ -14,7 +14,7 @@
               :src="
                 !!item.poster
                   ? item.poster
-                  : require('~/static/images/home/home-back.jpg')
+                  : require('~/static/images/book0.jpg')
               "
               :alt="item.articleTitle"
             />

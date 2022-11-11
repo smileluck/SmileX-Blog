@@ -129,7 +129,7 @@ const dynamicTree = (list, pid) => {
 <style lang="scss" scoped>
 .layout-header {
   &:after {
-    background: url('~static/images/home/home-back.jpg') center center / cover
+    background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/home-back.jpg') center center / cover
       no-repeat;
     background-position: 50% 70%;
     width: 100%;

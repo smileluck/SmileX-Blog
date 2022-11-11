@@ -72,7 +72,7 @@ export default {
 $inner-width: 600px;
 
 .home-wrapper {
-  background: url('~static/images/home/home-back.jpg') center center / cover
+  background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/1.jpg') center center / cover
     no-repeat;
   color: #fff;
   width: 100%;
