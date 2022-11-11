@@ -25,6 +25,7 @@
           @click="pageHandle(item)"
           class="smilex-pagination-pager-item smilex-pagination-btn"
           :class="{ 'smilex-pagination-btn_active': $data._current == item }"
+          :style="{ ' cursor: not-allowed;': $data._current == item }"
           :key="item"
         >
           <a :title="item">{{ item }}</a>
@@ -78,6 +79,13 @@ export default {
       return this.totalCount === 0 ? 1 : Math.ceil(this.totalCount / this.size)
     },
   },
+  watch: {
+    pageCount: {
+      handler(to, from) {
+        this.updateData()
+      },
+    },
+  },
   mounted() {
     this.updateData()
   },
@@ -87,6 +95,9 @@ export default {
         return
       }
       if (this.$data._current == this.pageCount && nextPage >= this.pageCount) {
+        return
+      }
+      if (this.$data._current == nextPage) {
         return
       }
       nextPage = nextPage < 1 ? 1 : nextPage

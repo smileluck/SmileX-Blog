@@ -23,7 +23,7 @@ export default {
       showList: [],
     }
   },
-  created() {
+  mounted() {
     this.$axios
       .get(`/open/blog/${this.$store.state.tenantId}/tag/list`)
       .then((res) => {
@@ -55,7 +55,6 @@ export default {
   methods: {
     navTag(item) {
       if (!item.choice) {
-        this.$store.commit('setChoiceTag', item)
         for (let i = 0; i < this.showList.length; i++) {
           if (this.showList[i].id == item.id) {
             this.showList[i].choice = true
@@ -67,6 +66,7 @@ export default {
           path: '/blog',
           query: { tagId: item.id },
         })
+        this.$store.commit('setChoiceTag', { ...item })
       } else {
         this.$store.commit('setChoiceTag', null)
         this.$router.push({
