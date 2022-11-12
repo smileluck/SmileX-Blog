@@ -67,13 +67,11 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
 $inner-width: 600px;
-
 .home-wrapper {
-  background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/1.jpg') center center / cover
-    no-repeat;
+  background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/1.jpg')
+    center center / cover no-repeat;
   color: #fff;
   width: 100%;
   height: 100%;
@@ -83,10 +81,11 @@ $inner-width: 600px;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    width: $inner-width;
+    max-width: 80%;
 
     &_inner {
       margin: 0 auto;
-      width: $inner-width;
       display: flex;
       text-align: center;
       justify-content: center;

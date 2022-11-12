@@ -41,7 +41,7 @@ $S-color-success-light-7: #d1edc4;
 $S-color-success-light-8: #e1f3d8;
 $S-color-success-light-9: #f0f9eb;
 $S-color-success-dark-2: #529b2e;
-$S-color-warning:#e6a23c;
+$S-color-warning: #e6a23c;
 $S-color-warning-light-3: #eebe77;
 $S-color-warning-light-5: #f3d19e;
 $S-color-warning-light-7: #f8e3c5;
@@ -69,3 +69,17 @@ $S-color-info-light-7: #dedfe0;
 $S-color-info-light-8: #e9e9eb;
 $S-color-info-light-9: #f4f4f5;
 $S-color-info-dark-2: #73767a;
+
+@media only screen and (max-width: 576px) {
+  $S-Box-Shadow: 0 1px 5px rgb(192, 192, 192);
+  $S-Box-Shadow-Hover: 0 1px 7px rgb(122, 122, 122);
+  $S-Box-Border-Radius: 8px;
+  $S-Box-Padding: 20px 10px;
+
+  $S-Font-Size-Notice: 12px;
+  $S-Font-Size-Base: 14px;
+  $S-Font-Size-Head16: 12px;
+  $S-Font-Size-Head18: 14px;
+  $S-Font-Size-Head20: 26px;
+  $S-Font-Size-Head24: 20px;
+}

@@ -83,3 +83,9 @@ page-leave-active {
 page-leave-active {
   opacity: 0;
 }
+
+/*** vditor-reset */
+.vditor-reset ul,
+.vditor-reset ol {
+  list-style: auto !important;
+}

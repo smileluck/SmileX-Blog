@@ -80,7 +80,7 @@ export default {
     margin-bottom: 4px;
     height: 80px;
     &_img {
-      @include img-box(33);
+      @include img-box(33%);
     }
     &_info {
       width: 61%;

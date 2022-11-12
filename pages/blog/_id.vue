@@ -91,7 +91,8 @@
         <div ref="articleOutline" style="display: none"></div>
         <BlogRanking />
         <blog-tags />
-        <blog-comment />
+        <!-- <blog-comment /> -->
+        <blog-work />
       </aside>
     </div>
   </main>

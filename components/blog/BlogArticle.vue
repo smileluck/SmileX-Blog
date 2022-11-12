@@ -179,4 +179,15 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 576px) {
+  .smilex-article {
+    &-img {
+      display: none;
+    }
+    &-info {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
 </style>
