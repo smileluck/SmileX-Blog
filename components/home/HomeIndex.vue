@@ -69,8 +69,8 @@ export default {
 
 <style lang="scss" scoped>
 $inner-width: 600px;
-.home-wrapper {
-  background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/1.jpg')
+.home-wrapper { 
+  background: url('~static/images/home/home-back3.jpg')
     center center / cover no-repeat;
   color: #fff;
   width: 100%;

@@ -161,7 +161,7 @@ export default {
             {
               anchor: 1,
               lazyLoadImage:
-                'https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/common/loading.gif',
+                '~static/images/loading.gif',
               markdown: {
                 toc: true,
               },
@@ -180,7 +180,7 @@ export default {
       },
     },
   },
-  beforeMount() {
+  beforeCreate() {
     this.$store.commit('setSmallHeader', true)
   },
   beforeDestroy() {

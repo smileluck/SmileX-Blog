@@ -129,7 +129,7 @@ const dynamicTree = (list, pid) => {
 <style lang="scss" scoped>
 .layout-header {
   &:after {
-    background: url('https://smile-sxd.oss-cn-shenzhen.aliyuncs.com/smilex/images/common/wallpaper/home-back.jpg')
+    background: url('~static/images/home/home-back3.jpg')
       center center / cover no-repeat;
     background-position: 50% 70%;
     width: 100%;
@@ -138,6 +138,7 @@ const dynamicTree = (list, pid) => {
     top: 0;
     left: 0;
     content: '';
+    transition: all 0.3s;
   }
 }
 .header {
@@ -258,12 +259,15 @@ const dynamicTree = (list, pid) => {
     top: 0;
   }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .layout-header {
     .item-link {
       display: block;
       padding: 0 4px;
       width: 100%;
+    }
+    .header-logo{
+      display: none;
     }
   }
 }

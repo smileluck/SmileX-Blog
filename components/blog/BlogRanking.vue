@@ -8,7 +8,7 @@
         :key="item.id"
         @click="navDetail(item.id)"
       >
-        <div class="blog-ranking-item_img">
+        <!-- <div class="blog-ranking-item_img">
           <a href="javascript:void" :title="item.articleTitle">
             <img
               :src="
@@ -19,7 +19,7 @@
               :alt="item.articleTitle"
             />
           </a>
-        </div>
+        </div> -->
         <div class="blog-ranking-item_info">
           <div class="blog-ranking-info_title">{{ item.articleTitle }}</div>
           <div class="blog-ranking-info_date">{{ item.createTime }}</div>
@@ -83,7 +83,7 @@ export default {
       @include img-box(33%);
     }
     &_info {
-      width: 61%;
+      width: 100%;
       margin-left: 16px;
       height: 100%;
       position: relative;

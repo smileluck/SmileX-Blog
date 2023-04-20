@@ -1,6 +1,6 @@
 <template>
   <div class="smilex-article" @click="navDetail(article.id)">
-    <div class="smilex-article-img">
+    <!-- <div class="smilex-article-img">
       <a href="javascript:void" :title="article.articleTitle">
         <img
           :src="
@@ -13,22 +13,13 @@
           :alt="article.articleTitle"
         />
       </a>
-    </div>
+    </div> -->
     <div class="smilex-article-info">
       <div class="smilex-article-info-top">
-        <sx-icon
-          class="lock"
-          iconType="lock"
-          v-if="article.visitType != 1"
-        ></sx-icon>
+        <sx-icon class="lock" iconType="lock" v-if="article.visitType != 1"></sx-icon>
         <p class="smilex-article-info_type">
-          <a
-            href="javascript:void"
-            :title="`查看${article.sectionName}栏目`"
-            @click.stop="navSection(article.sectionId)"
-          >
-            {{ article.sectionName }}</a
-          >
+          <a href="javascript:void" :title="`查看${article.sectionName}栏目`" @click.stop="navSection(article.sectionId)">
+            {{ article.sectionName }}</a>
         </p>
         <div class="smilex-article-info_title">{{ article.articleTitle }}</div>
         <div class="smilex-article-info_abstract">
@@ -101,7 +92,8 @@ export default {
 <style lang="scss" scoped>
 .smilex-article {
   margin-bottom: 20px;
-  width: 100%;
+  width: 48%;
+  flex: 48%;
   padding: $S-Box-Padding;
   box-sizing: border-box;
   // border: 1px solid #555555;
@@ -114,21 +106,28 @@ export default {
   position: relative;
   height: 240px;
   cursor: pointer;
+  margin-right: 10px;
   @include transition(all 0.3s);
+
   &:hover {
     box-shadow: $S-Box-Shadow-Hover;
   }
+
   &-img {
     @include img-box(37%);
   }
+
   &-info {
-    width: 61%;
-    margin-left: 16px;
+    // width: 61%;
+    // margin-left: 16px;
+    width: 100%;
     height: 100%;
     position: relative;
+
     &-top {
       height: 60%;
       position: relative;
+
       .lock {
         position: absolute;
         top: 0px;
@@ -137,6 +136,7 @@ export default {
         height: 15px;
       }
     }
+
     &-bottom {
       padding: 14px 0 0 0;
       // height: 40%;
@@ -146,32 +146,40 @@ export default {
       position: absolute;
       width: 100%;
     }
+
     &_type {
       font-size: $S-Font-Size-Head18;
-      > a {
+
+      >a {
         color: $S-Font-Color-Red;
       }
     }
+
     &_title {
       font-size: $S-Font-Size-Head20;
     }
+
     &_abstract {
       margin: 5px 0;
       font-size: $S-Font-Size-Base;
       color: $S-Font-Color-Gray;
       @include text-ellipsis(3);
     }
+
     &_date {
       color: $S-Font-Color-Gray;
     }
+
     &_viewer {
       color: $S-Font-Color-Gray;
       margin-top: 5px;
+
       .smilex-article-viewer_pcount {
         display: inline-block;
         padding: 0 16px 0 0;
         border-right: 1px solid $S-Border-Color-Gray;
       }
+
       .smilex-article-viewer_pcomment {
         display: inline-block;
         padding: 0 0 0 10px;
@@ -179,11 +187,25 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 1000px) {
   .smilex-article {
+    flex: 100%;
+    width: 100%;
+    margin-right:0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .smilex-article {
+
+    flex: 100%;
+    width: 100%;
+    margin-right:0;
+
     &-img {
       display: none;
     }
+
     &-info {
       width: 100%;
       margin-left: 0;

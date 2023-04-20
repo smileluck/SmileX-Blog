@@ -13,12 +13,8 @@
         </div>
         <sx-empty-data v-else></sx-empty-data>
         <div style="text-align: center">
-          <sx-pagination
-            :current="page.current"
-            :totalCount="page.totalCount"
-            :size="page.size"
-            v-on:change="pageChange"
-          />
+          <sx-pagination :current="page.current" :totalCount="page.totalCount" :size="page.size"
+            v-on:change="pageChange" />
         </div>
       </div>
       <aside class="content-aside">
@@ -94,4 +90,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content-article-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+</style>
